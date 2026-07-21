@@ -19,14 +19,14 @@
  *     weekly mon 09:00   | your prompt here
  *
  * Commands:
- *   /schedule add <template>    - Add a scheduled task
- *   /schedule list              - List all tasks
- *   /schedule remove <id>       - Remove a task
- *   /schedule toggle <id>       - Enable/disable a task
- *   /schedule pause             - Pause all scheduling
- *   /schedule resume            - Resume all scheduling
- *   /schedule clear             - Remove all tasks
- *   /schedule help              - Show template help
+ *   /cron add <template>    - Add a scheduled task
+ *   /cron list              - List all tasks
+ *   /cron remove <id>       - Remove a task
+ *   /cron toggle <id>       - Enable/disable a task
+ *   /cron pause             - Pause all scheduling
+ *   /cron resume            - Resume all scheduling
+ *   /cron clear             - Remove all tasks
+ *   /cron help              - Show template help
  *
  * Config files (also editable directly):
  *   ~/.pi/agent/scheduler-tasks.json   (global)
@@ -266,14 +266,14 @@ Format:  <schedule-spec> | <prompt>
   weekly mon 09:00    | Weekly planning
 
 ── Commands ──────────────────────────────────────────
-  /schedule add <template>   Add a task
-  /schedule list             List all tasks
-  /schedule remove <id>      Remove a task
-  /schedule toggle <id>      Enable/disable
-  /schedule pause            Pause all
-  /schedule resume           Resume all
-  /schedule clear            Remove all
-  /schedule help             Show this help
+  /cron add <template>   Add a task
+  /cron list             List all tasks
+  /cron remove <id>      Remove a task
+  /cron toggle <id>      Enable/disable
+  /cron pause            Pause all
+  /cron resume           Resume all
+  /cron clear            Remove all
+  /cron help             Show this help
 `.trim();
 
 // ---------------------------------------------------------------------------
@@ -401,8 +401,8 @@ export default function (pi: ExtensionAPI) {
     clearAllTimers();
   });
 
-  // ── /schedule command ─────────────────────────────────
-  pi.registerCommand("schedule", {
+  // ── /cron command ─────────────────────────────────────
+  pi.registerCommand("cron", {
     description: "Manage scheduled prompts — add, list, remove, toggle, pause, resume, clear, help",
     handler: async (args, ctx) => {
       const raw = args.trim();
@@ -554,7 +554,7 @@ export default function (pi: ExtensionAPI) {
         const pipeIdx = template.indexOf("|");
         if (pipeIdx < 0) {
           ctx.ui.notify(
-            'Format: /schedule add <spec> | <prompt>\nExample: /schedule add daily 09:00 | Status update',
+            'Format: /cron add <spec> | <prompt>\nExample: /cron add daily 09:00 | Status update',
             "error",
           );
           return;
@@ -571,7 +571,7 @@ export default function (pi: ExtensionAPI) {
         const info = parseScheduleSpec(spec);
         if (!info) {
           ctx.ui.notify(
-            `Invalid schedule spec: "${spec}"\nUse /schedule help to see valid formats.`,
+            `Invalid schedule spec: "${spec}"\nUse /cron help to see valid formats.`,
             "error",
           );
           return;
