@@ -1,6 +1,6 @@
 {
   "name": "@vincentff/pi-scheduler",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "Schedule timed prompts for pi - supports one-time and periodic tasks with a fixed-format template",
   "keywords": [
     "pi-package"
