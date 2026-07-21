@@ -44,6 +44,50 @@ pi install ./path/to/pi-scheduler
 
 Days: `mon`, `tue`, `wed`, `thu`, `fri`, `sat`, `sun`
 
+## Usage Examples
+
+### Example 1: Token Quota Reset Retry
+
+You hit the rate limit, but your quota resets in 45 minutes. Schedule pi to automatically retry:
+
+```
+/schedule add in 45m | Retry my last request: review the auth module refactoring
+```
+
+When the timer fires, pi sends the prompt as a user message — as if you typed it yourself. You can step away and come back to the result.
+
+### Example 2: Daily Morning Briefing
+
+Set up a recurring task to kick off every workday:
+
+```
+/schedule add daily 09:00 | Good morning! Check my git history since yesterday, summarize what I worked on, and suggest the top 3 priorities for today.
+```
+
+Or configure multiple tasks in the config file for a full daily routine:
+
+```json
+{
+  "tasks": [
+    {
+      "id": "morning-brief",
+      "schedule": "daily 09:00",
+      "prompt": "Summarize recent changes in the repo and suggest today's priorities",
+      "enabled": true,
+      "createdAt": "2025-07-21T00:00:00.000Z"
+    },
+    {
+      "id": "afternoon-check",
+      "schedule": "daily 14:00",
+      "prompt": "Review open issues and remind me of any pending code reviews",
+      "enabled": true,
+      "createdAt": "2025-07-21T00:00:00.000Z"
+    }
+  ],
+  "paused": false
+}
+```
+
 ## Commands
 
 | Command | Description |
