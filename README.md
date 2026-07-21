@@ -11,7 +11,7 @@ Schedule timed prompts for pi. Supports one-time and periodic tasks using a **fi
 ## Installation
 
 ```bash
-pi install npm:pi-scheduler
+pi install npm:@vincentff/pi-scheduler
 ```
 
 Or for local development:
