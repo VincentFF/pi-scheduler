@@ -1,5 +1,7 @@
 # pi-scheduler
 
+[中文](README.zh-CN.md)
+
 Schedule timed prompts for pi. Supports one-time and periodic tasks using a **fixed-format template** — no AI parsing required, so it works even when your token quota is exhausted.
 
 ## Why pi-scheduler?
