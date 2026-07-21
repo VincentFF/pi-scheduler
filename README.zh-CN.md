@@ -7,7 +7,7 @@
 ## 为什么选择 pi-scheduler？
 
 - **不依赖 AI**：所有调度解析使用正则表达式，而非 AI。即使被限流或 token 耗尽，依然可以配置定时任务。
-- **两种配置方式**：通过 `/cron add` 交互式添加，或直接编辑 JSON 配置文件。
+- **两种配置方式**：通过 `/schedule add` 交互式添加，或直接编辑 JSON 配置文件。
 - **灵活的定时规则**：支持一次性（绝对时间 / 相对延迟）、每日、每小时、固定间隔、每周。
 
 ## 安装
@@ -53,7 +53,7 @@ pi install ./path/to/pi-scheduler
 你触发了速率限制，但配额将在 45 分钟后重置。让 pi 到时间自动重试：
 
 ```
-/cron add in 45m | 重试我上次的请求：review auth 模块的重构
+/schedule add in 45m | 重试我上次的请求：review auth 模块的重构
 ```
 
 定时器触发后，pi 会将 prompt 作为用户消息发送——就像你亲手输入一样。你可以暂时离开，回来直接看结果。
@@ -63,7 +63,7 @@ pi install ./path/to/pi-scheduler
 设置一个周期性任务，让每个工作日自动启动：
 
 ```
-/cron add daily 09:00 | 早上好！查看我从昨天以来的 git 历史，总结我做了什么，并建议今天的前 3 个优先事项。
+/schedule add daily 09:00 | 早上好！查看我从昨天以来的 git 历史，总结我做了什么，并建议今天的前 3 个优先事项。
 ```
 
 也可以在配置文件中批量配置，实现完整的日常流程：
@@ -94,14 +94,14 @@ pi install ./path/to/pi-scheduler
 
 | 命令 | 说明 |
 |---------|-------------|
-| `/cron add <模板>` | 添加定时任务 |
-| `/cron list` | 列出所有任务及下次执行时间 |
-| `/cron remove <id>` | 删除任务（支持 ID 前缀匹配） |
-| `/cron toggle <id>` | 启用/禁用某个任务 |
-| `/cron pause` | 暂停所有调度 |
-| `/cron resume` | 恢复所有调度 |
-| `/cron clear` | 清除所有任务 |
-| `/cron help` | 显示模板参考 |
+| `/schedule add <模板>` | 添加定时任务 |
+| `/schedule list` | 列出所有任务及下次执行时间 |
+| `/schedule remove <id>` | 删除任务（支持 ID 前缀匹配） |
+| `/schedule toggle <id>` | 启用/禁用某个任务 |
+| `/schedule pause` | 暂停所有调度 |
+| `/schedule resume` | 恢复所有调度 |
+| `/schedule clear` | 清除所有任务 |
+| `/schedule help` | 显示模板参考 |
 
 ## 配置文件
 

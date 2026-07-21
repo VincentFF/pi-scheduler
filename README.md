@@ -7,7 +7,7 @@ Schedule timed prompts for pi. Supports one-time and periodic tasks using a **fi
 ## Why pi-scheduler?
 
 - **Token-independent**: All schedule parsing uses regex, not AI. Schedule tasks even when you're rate-limited or out of tokens.
-- **Two config methods**: Add tasks interactively via `/cron add` or edit the JSON config file directly.
+- **Two config methods**: Add tasks interactively via `/schedule add` or edit the JSON config file directly.
 - **Flexible timing**: One-time (absolute or relative), daily, hourly, interval-based, weekly.
 
 ## Installation
@@ -53,7 +53,7 @@ Days: `mon`, `tue`, `wed`, `thu`, `fri`, `sat`, `sun`
 You hit the rate limit, but your quota resets in 45 minutes. Schedule pi to automatically retry:
 
 ```
-/cron add in 45m | Retry my last request: review the auth module refactoring
+/schedule add in 45m | Retry my last request: review the auth module refactoring
 ```
 
 When the timer fires, pi sends the prompt as a user message — as if you typed it yourself. You can step away and come back to the result.
@@ -63,7 +63,7 @@ When the timer fires, pi sends the prompt as a user message — as if you typed 
 Set up a recurring task to kick off every workday:
 
 ```
-/cron add daily 09:00 | Good morning! Check my git history since yesterday, summarize what I worked on, and suggest the top 3 priorities for today.
+/schedule add daily 09:00 | Good morning! Check my git history since yesterday, summarize what I worked on, and suggest the top 3 priorities for today.
 ```
 
 Or configure multiple tasks in the config file for a full daily routine:
@@ -94,14 +94,14 @@ Or configure multiple tasks in the config file for a full daily routine:
 
 | Command | Description |
 |---------|-------------|
-| `/cron add <template>` | Add a scheduled task |
-| `/cron list` | List all tasks with next run times |
-| `/cron remove <id>` | Remove a task (prefix match) |
-| `/cron toggle <id>` | Enable/disable a task |
-| `/cron pause` | Pause all scheduling |
-| `/cron resume` | Resume all scheduling |
-| `/cron clear` | Remove all tasks |
-| `/cron help` | Show template reference |
+| `/schedule add <template>` | Add a scheduled task |
+| `/schedule list` | List all tasks with next run times |
+| `/schedule remove <id>` | Remove a task (prefix match) |
+| `/schedule toggle <id>` | Enable/disable a task |
+| `/schedule pause` | Pause all scheduling |
+| `/schedule resume` | Resume all scheduling |
+| `/schedule clear` | Remove all tasks |
+| `/schedule help` | Show template reference |
 
 ## Config File
 
